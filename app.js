@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
-const User = require('./models/user');
+const User = require('./models/usermodel');
 
 const secret = 'tempsecret';
 
