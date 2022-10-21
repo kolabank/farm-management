@@ -9,7 +9,12 @@ const UserSchema = new schema({
         required: true,
         unique: true
 
-    }
+    },
+
+    farms: [{
+        type: schema.Types.ObjectId,
+        ref: 'Farm'
+    }]
 
 })
 

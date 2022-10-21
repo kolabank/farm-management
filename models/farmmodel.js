@@ -12,10 +12,6 @@ const FarmSchema = new Schema({
     },
     description: String,
 
-    farmusers: [{
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }]
 })
 
 const Farm = mongoose.model('Farm', FarmSchema);
