@@ -1,6 +1,6 @@
-const { model } = require('mongoose');
+// const { model } = require('mongoose');
 const Farm = require('../models/farmmodel');
-const { findById } = require('../models/usermodel');
+// const { findById } = require('../models/usermodel');
 const User = require('../models/usermodel');
 
 module.exports.renderDashboard = async(req, res) => {

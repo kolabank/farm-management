@@ -35,10 +35,19 @@ passport.use(new LocalStrategy(User.authenticate()))
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.use((req, res, next) => {
 
+    res.locals.currentUser = req.user;
+
+    next();
+})
 
 app.use('/', userRoutes);
 app.use('/', farmRoutes);
+
+
+
+
 
 const dbUrl = 'mongodb://localhost:27017/farm-management';
 
@@ -52,9 +61,8 @@ const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
     console.log("Database connected");
+
 });
-
-
 
 
 app.get('/', (req, res) => {
@@ -62,11 +70,13 @@ app.get('/', (req, res) => {
 })
 
 
-// app.get('/signup', (req, res) => {
-//     res.render("users/signup");
-// })
-
-
+app.get('/logout', (req, res) => {
+    req.logout(function(err) {
+        if (err) { return next(err) };
+        res.redirect('login');
+        console.log(req.user);
+    })
+})
 
 app.listen(3000, () => {
     console.log("Now listening on port 3000");

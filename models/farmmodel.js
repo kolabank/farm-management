@@ -12,6 +12,9 @@ const FarmSchema = new Schema({
     },
     description: String,
 
+    longitude: Number,
+    latitude: Number,
+
 })
 
 const Farm = mongoose.model('Farm', FarmSchema);

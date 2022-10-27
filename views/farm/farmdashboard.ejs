@@ -5,33 +5,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/common.css">
     <title>Dashboard</title>
 </head>
 
 <body>
-    <h1>You are welcome,
-        <%= user.username %>
-    </h1>
+    <%- include('../partials/navbar')  %>
 
-    <h2>Your farms</h2>
+        <h2>Your farms</h2>
 
-    <% for(let farm of user.farms) {%>
+        <div class="row gy-4">
 
-        <div class="card">
-            <h5 class="card-header">
-                <%= farm.farmname %>
-            </h5>
-            <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
+            <% for(let farm of user.farms) {%>
+
+                <div class="col-sm-4">
+
+                    <div class="card" id="farmcard">
+                        <h5 class="card-header">
+                            <%= farm.farmname %>
+                        </h5>
+                        <div class="card-body">
+                            <h5 class="card-title">Location:
+                                <%= farm.location %>
+                            </h5>
+                            <p class="card-text">
+                                <%= farm.description %>
+                            </p>
+                            <a href="#" class="btn btn-primary">Farm Details</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <% } %>
+
         </div>
-        <% } %>
 
-            <form action="/newfarm" method="get">
-                <button>Add a new farm</button>
-            </form>
+
+        <p></p>
+
+        <form action="/newfarm" method="get" class="addbutton">
+            <button class="btn btn-danger">Add a new farm</button>
+
+        </form>
 
 
 
